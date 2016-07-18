@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -18,8 +19,9 @@ import android.widget.Toast;
 public class DummyFragment extends Fragment {
 
     ImageView bigimg;
+    TextView textView;
     // A big memory chunk to make oom happens faster
-    int[][]memo = new int[2048][2048];
+    int[][] memo = new int[2048][2048];
 
     @Nullable
     @Override
@@ -32,19 +34,9 @@ public class DummyFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bigimg = (ImageView) view.findViewById(R.id.image);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final Drawable bm = getResources().getDrawable(R.drawable.image);
-                bigimg.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        bigimg.setImageDrawable(bm);
-                    }
-                });
-            }
-        }).start();
-        Toast.makeText(getContext(),text, Toast.LENGTH_SHORT).show();
+        textView = (TextView) view.findViewById(R.id.title);
+        bigimg.setImageDrawable(getResources().getDrawable(R.drawable.image));
+        textView.setText(text);
     }
 
     private static final String DESC = "DESC";
@@ -82,6 +74,7 @@ public class DummyFragment extends Fragment {
         super.onDestroyView();
         Log.e(TAG, this.toString() + " onDestroyView " + text);
         bigimg = null;
-
+        textView = null;
+        // TODO Warning, if any view reference is not claimed here, the whole view will be in the memory!!
     }
 }

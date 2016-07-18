@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <yammer.com.fragmentbackstacktest.BigImageView
         android:id="@+id/image"
+        android:src="@drawable/image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-         />
+        android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/title"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:textSize="28sp"
+        android:layout_alignParentBottom="true"
+        android:text="test"/>
 
-</LinearLayout>
+</RelativeLayout>
