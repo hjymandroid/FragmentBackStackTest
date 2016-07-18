@@ -18,6 +18,7 @@ import android.widget.Toast;
 public class DummyFragment extends Fragment {
 
     ImageView bigimg;
+    // A big memory chunk to make oom happens faster
     int[][]memo = new int[2048][2048];
 
     @Nullable

@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private void addFragment() {
         String title = String.valueOf(++count);
         DummyFragment dummyFragment = DummyFragment.newInstance(title);
-        getSupportFragmentManager().beginTransaction().add(R.id.content_fragment, dummyFragment, title).addToBackStack(title).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, dummyFragment, title).addToBackStack(title).commit();
     }
 
     @Override
