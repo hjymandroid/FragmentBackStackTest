@@ -81,6 +81,7 @@ public class DummyFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         Log.e(TAG, this.toString() + " onDestroyView " + text);
+        bigimg = null;
 
     }
 }
